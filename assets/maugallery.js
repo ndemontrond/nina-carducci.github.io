@@ -244,7 +244,7 @@
         return;
       }
       $(".active-tag").removeClass("active active-tag");
-      $(this).addClass("active-tag");
+      $(this).addClass("active active-tag"); // activate gold background
 
       var tag = $(this).data("images-toggle");
 
