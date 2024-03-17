@@ -9,7 +9,6 @@
         />
         <meta name="author" content="Nina Carducci" />
         <title>Mon site de photographie</title>
-        <link rel="stylesheet" href="./assets/bootstrap/bootstrap.css" />
         <link rel="stylesheet" href="./assets/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,14 +16,7 @@
             href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap"
             rel="stylesheet"
         />
-        <script src="./assets/bootstrap/bootstrap.bundle.js"></script>
-        <script
-            src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"
-        ></script>
-        <script src="./assets/maugallery.js"></script>
-        <script src="./assets/scripts.js"></script>
+        <script src="./assets/scripts.js" defer></script>
     </head>
     <body>
         <header>
@@ -49,33 +41,84 @@
             </nav>
         </header>
         <main>
-            <div
-                id="carouselExampleIndicators"
-                class="carousel slide"
-                data-bs-ride="carousel"
-            >
+            <div class="carousel-container">
                 <div class="carousel-indicators">
                     <button
                         type="button"
                         data-bs-target="#carouselExampleIndicators"
                         data-bs-slide-to="0"
                         class="active"
-                        aria-current="true"
                         aria-label="Slide 1"
+                        aria-current="true"
                     ></button>
                     <button
                         type="button"
                         data-bs-target="#carouselExampleIndicators"
                         data-bs-slide-to="1"
                         aria-label="Slide 2"
+                        class=""
                     ></button>
                     <button
                         type="button"
                         data-bs-target="#carouselExampleIndicators"
                         data-bs-slide-to="2"
                         aria-label="Slide 3"
+                        class=""
                     ></button>
                 </div>
+                <div class="carousel">
+                    <div class="image">
+                        <img
+                            loading="lazy"
+                            src="./assets/images/slider/crowd-concert-desktop.webp"
+                            alt="crow at a concert"
+                        />
+                    </div>
+                    <div class="image">
+                        <img
+                            loading="lazy"
+                            src="./assets/images/slider/man-kissing-woman-desktop.webp"
+                            alt="man kissing a woman"
+                        />
+                    </div>
+                    <div class="image">
+                        <img
+                            src="./assets/images/slider/office-worker-walking-tokyo-street-desktop.webp"
+                            alt="office worker walking in tokyo street"
+                        />
+                    </div>
+                </div>
+
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev"
+                >
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next"
+                >
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!-- <div
+                id="carouselExampleIndicators"
+                class="carousel slide"
+                data-bs-ride="carousel"
+            >
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img
@@ -123,7 +166,7 @@
                     ></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-            </div>
+            </div> -->
             <section id="about">
                 <div class="picture left">
                     <img
