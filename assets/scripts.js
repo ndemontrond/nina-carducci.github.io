@@ -213,7 +213,6 @@
 })();
 
 function filterGallery(tag, clickedTag) {
-    // event.preventDefault();
     // Remove 'active-tag' class from the currently active 'li' element
     const currentActiveTag = document.querySelector(".nav-link.active-tag");
     currentActiveTag.classList.remove("active-tag");
@@ -223,17 +222,17 @@ function filterGallery(tag, clickedTag) {
 
     const galleryItems = document.querySelectorAll(".gallery-item");
     galleryItems.forEach((item) => {
-        const containerGChild = item.closest(".containerGChild");
+        const galleryContainerChild = item.closest("#galleryContainerChild");
         if (tag === "All" || item.dataset.galleryTag === tag) {
-            containerGChild.style.display = "block";
-            const children = containerGChild.children;
+            galleryContainerChild.style.display = "block";
+            const children = galleryContainerChild.children;
             if (children) {
                 Array.from(children).forEach((child) =>
                     child.classList.add("active-gallery-item")
                 );
             }
         } else {
-            containerGChild.style.display = "none";
+            galleryContainerChild.style.display = "none";
         }
     });
 }
