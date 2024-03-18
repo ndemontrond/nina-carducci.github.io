@@ -3,30 +3,6 @@
 
     let activeModal = null; // Variable to store the active modal
 
-    // Function for creating a responsive image gallery
-    // function mauGallery(selector, options) {
-    // Select the gallery container element
-    // const gallery = document.querySelector(selector);
-
-    // Default options for the gallery
-    // const defaults = {
-    //     columns: {
-    //         xs: 1,
-    //         sm: 2,
-    //         md: 3,
-    //         lg: 3,
-    //         xl: 3,
-    //     },
-    //     showTags: true,
-    //     tagsPosition: "top",
-    // };
-
-    // Merge provided options with defaults
-    // options = Object.assign({}, defaults, options);
-
-    // Collection to hold unique tags
-    // const tagsCollection = [];
-
     // DOM utility functions:
     function getElement(selector, parent = document) {
         return parent.querySelector(selector);
@@ -35,17 +11,11 @@
     function getElements(selector, parent = document) {
         return parent.querySelectorAll(selector);
     }
-    console.log("test");
-    // const getElement = (selector, parent = document) =>
-    //     parent.querySelector(selector);
-    // const getElements = (selector, parent = document) =>
-    //     parent.querySelectorAll(selector);
-    // const createNewElement = (tag, props) =>
-    //     Object.assign(document.createElement(tag), props);
 
     // Carousel component:
     const carousel = (container) => {
         const carouselContainer = getElement(".carousel", container);
+
         const slides = getElements(".image", carouselContainer);
         const totalSlides = slides.length;
         let currentIndex = 0; // Start from the second slide
@@ -63,19 +33,6 @@
                 -currentIndex * 100
             }%)`;
             updateIndicators();
-
-            // Remove class "active" from all slides
-            slides.forEach((slide) => slide.classList.remove("active"));
-            const currentSlide = slides[currentIndex];
-            currentSlide.classList.add("active");
-            // if (currentIndex === 3) {
-            //     const currentSlide = slides[0];
-            //     currentSlide.classList.add("active");
-            // } else {
-            //     // Add class "active" to the current slide
-            //     const currentSlide = slides[currentIndex];
-            //     currentSlide.classList.add("active");
-            // }
         };
 
         const updateIndicators = () => {
@@ -143,8 +100,9 @@
         const prevButton = getElement(".carousel-control-prev");
         prevButton.onclick = prevSlide;
 
-        // Start automatic sliding
+        // Define automatic sliding functionality
         let intervalId;
+
         const startAutoSlide = () => {
             intervalId = setInterval(nextSlide, 5000); // Adjust interval as needed
         };
@@ -153,10 +111,17 @@
             clearInterval(intervalId);
         };
 
-        // Start automatic sliding when mouse enters the carousel
-        carouselContainer.addEventListener("mouseenter", stopAutoSlide);
-        // Stop automatic sliding when mouse leaves the carousel
-        carouselContainer.addEventListener("mouseleave", startAutoSlide);
+        // Get carousel container
+        const carouselParent = document.getElementById("carouselId");
+
+        // Add event listeners for mouseover and mouseout on the carousel container
+        carouselParent.addEventListener("mouseover", () => {
+            stopAutoSlide();
+        });
+
+        carouselParent.addEventListener("mouseout", () => {
+            startAutoSlide();
+        });
 
         // Start automatic sliding initially
         startAutoSlide();
@@ -169,9 +134,8 @@
     function setupEventListeners() {
         gallery.addEventListener("click", function (event) {
             const target = event.target;
-            if (target.classList.contains("nav-link")) {
-                filterByTag(target.dataset.imagesToggle); // Filter by tag when a tag is clicked
-            } else if (target.classList.contains("gallery-item")) {
+
+            if (target.classList.contains("gallery-item")) {
                 openModal(target); // Open modal when an image is clicked
             }
         });
@@ -186,7 +150,16 @@
             closeModal(activeModal);
         }
 
-        const images = document.querySelectorAll(".gallery-item");
+        //Check if there's a class to adapt content of the modal
+        const activeTags = document.querySelectorAll(".active-gallery-item");
+        let images;
+
+        if (activeTags.length !== 0) {
+            images = activeTags;
+        } else {
+            images = document.querySelectorAll(".gallery-item");
+        }
+
         let currentIndex = Array.from(images).findIndex(
             (img) => img.src === element.src
         );
@@ -242,22 +215,28 @@
     }
 })();
 
-function filterGallery(tag) {
-    const activeTags = document.querySelectorAll(".active-tag");
-    activeTags.forEach((tag) => tag.classList.remove("active", "active-tag"));
+function filterGallery(tag, clickedTag) {
+    // event.preventDefault();
+    // Remove 'active-tag' class from the currently active 'li' element
+    const currentActiveTag = document.querySelector(".nav-link.active-tag");
+    currentActiveTag.classList.remove("active-tag");
+
+    // Add 'active-tag' class to the clicked 'li' element
+    clickedTag.classList.add("active-tag");
 
     const galleryItems = document.querySelectorAll(".gallery-item");
     galleryItems.forEach((item) => {
         const containerGChild = item.closest(".containerGChild");
         if (tag === "All" || item.dataset.galleryTag === tag) {
             containerGChild.style.display = "block";
+            const children = containerGChild.children;
+            if (children) {
+                Array.from(children).forEach((child) =>
+                    child.classList.add("active-gallery-item")
+                );
+            }
         } else {
             containerGChild.style.display = "none";
         }
     });
-
-    const selectedTag = document.querySelector(`[data-images-toggle="${tag}"]`);
-    if (selectedTag) {
-        selectedTag.classList.add("active", "active-tag");
-    }
 }
