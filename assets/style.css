@@ -485,7 +485,7 @@ nav a {
 }
 .carousel-indicators .active {
     opacity: 1;
-    background-color: #084298;  
+    background-color: #084298;
     /* //A changer !!!!! */
 }
 /*  
@@ -501,54 +501,62 @@ nav a {
 } */
 
 .carousel-container {
-  position: relative;
-  flex-grow: 1;
-  overflow: hidden;
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
 }
 
 .carousel {
-  display: flex;
+    display: flex;
 }
 
 .carousel .image {
-  flex: 1 0 100%;
+    flex: 1 0 100%;
+    display: none;
 }
 
 .carousel .image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel .active {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .carousel-container .btn-carousel {
-  position: absolute;
-  height: 40px;
-  padding: 10px;
-  border: none;
-  z-index: 10px;
-  cursor: pointer;
-  background-color: #fff;
-  font-size: 18px;
-  display: block;
+    position: absolute;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    z-index: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 18px;
+    display: block;
 }
 
 .carousel-container .btn-carousel-prev {
-  top: 45%;
-  left: 2%;
+    top: 45%;
+    left: 2%;
 }
 
 .carousel-container .btn-carousel-prev i::before {
-  vertical-align: baseline;
+    vertical-align: baseline;
 }
 
 .carousel-container .btn-carousel-next {
-  top: 45%;
-  right: 2%;
+    top: 45%;
+    right: 2%;
 }
 
 .carousel-container .btn-carousel-next i::before {
-  vertical-align: baseline;
+    vertical-align: baseline;
 }
 
 #about {
@@ -598,9 +606,33 @@ nav a {
     font-size: 14px;
 }
 
-#gallery {
-    /*	min-height: 100vh; */
+.containerG {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
+
+.gallery-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0.5em;
+}
+
+.containerGChild {
+    flex: 0 0 33.333%; /* 33.333% width for each column with some margin */
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Add display flex */
+    align-items: center; /* Vertically center the image */
+}
+
+.containerGChild img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensure image covers the entire container */
+}
+
 .title {
     text-align: center;
     padding-block: 2em;
@@ -626,13 +658,6 @@ nav a {
     content: "";
     display: block;
     padding-bottom: 100%;
-}
-.gallery-item {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    padding: 0.5em;
 }
 .mg-prev,
 .mg-next {
@@ -794,6 +819,11 @@ address {
         left: 0;
         z-index: -1;
     }
+
+    .containerGChild {
+        flex: 0 0 50%; /* 50% width for 2 columns */
+    }
+
     .about-me__title {
         text-align: center;
         margin-top: 1em;
@@ -871,6 +901,10 @@ address {
     }
     .picture {
         width: 80%;
+    }
+
+    .containerGChild {
+        flex: 0 0 100%;
     }
 }
 

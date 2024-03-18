@@ -81,8 +81,9 @@
                             alt="man kissing a woman"
                         />
                     </div>
-                    <div class="image">
+                    <div class="image active">
                         <img
+                            loading="eager"
                             src="./assets/images/slider/office-worker-walking-tokyo-street-desktop.webp"
                             alt="office worker walking in tokyo street"
                         />
@@ -199,7 +200,105 @@
             <section id="gallery">
                 <h2 class="title">Portfolio</h2>
                 <div class="container py-3">
-                    <div class="gallery" style="display: none">
+                    <button onclick="filterGallery('All')">
+                        Filter Entreprises
+                    </button>
+                    <button onclick="filterGallery('Concert')">
+                        Filter Entreprises
+                    </button>
+                    <button onclick="filterGallery('Entreprises')">
+                        Filter Entreprises
+                    </button>
+                    <button onclick="filterGallery('Mariages')">
+                        Filter Entreprises
+                    </button>
+                    <button onclick="filterGallery('Portrait')">
+                        Filter Entreprises
+                    </button>
+                    <div class="containerG" id="galleryContainer">
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Concert"
+                                class="gallery-item"
+                                src="./assets/images/gallery/concerts/crowd-rock-concert.webp"
+                                alt="crowd at a rock concert"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Entreprises"
+                                class="gallery-item"
+                                src="./assets/images/gallery/entreprise/man-wearing-black-suit.webp"
+                                alt="man wearing a black suit"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Entreprises"
+                                class="gallery-item"
+                                src="./assets/images/gallery/entreprise/woman-smilling-business-meeting.webp"
+                                alt="woman smilling during a business meeting"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Mariages"
+                                class="gallery-item"
+                                src="./assets/images/gallery/mariage/hands-touching.webp"
+                                alt="two hands touching with fingertip"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Portrait"
+                                class="gallery-item"
+                                src="./assets/images/gallery/portraits/man-closed-eyes.webp"
+                                alt="man with closed eyes"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Mariages"
+                                class="gallery-item"
+                                src="./assets/images/gallery/mariage/wed-couple.webp"
+                                alt="just wed couple"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Portrait"
+                                class="gallery-item"
+                                src="./assets/images/gallery/portraits/woman-next-to-fence.webp"
+                                alt="woman next to a fence"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Concert"
+                                class="gallery-item"
+                                src="./assets/images/gallery/concerts/singer-colored-smoke.webp"
+                                alt="singer at a concert with colored smoke behind him"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="containerGChild">
+                            <img
+                                data-gallery-tag="Entreprises"
+                                class="gallery-item"
+                                src="./assets/images/gallery/entreprise/woman-laughing.webp"
+                                alt="woman laughing in an office"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+                    <!-- <div class="gallery" style="display: none">
                         <img
                             data-gallery-tag="Concert"
                             class="gallery-item"
@@ -263,7 +362,7 @@
                             alt="woman laughing in an office"
                             loading="lazy"
                         />
-                    </div>
+                    </div> -->
                 </div>
                 <figure class="quote">
                     <blockquote class="quote__text h1">
