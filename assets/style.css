@@ -318,6 +318,7 @@ header {
     padding-inline: 100px;
     padding-block: 30px;
     align-items: center;
+    align-items: center;
 }
 
 header .name {
@@ -329,6 +330,7 @@ nav ul {
     list-style-type: none;
     font-size: 14px;
     margin-bottom: 0;
+    align-items: center;
 }
 
 nav li {
@@ -340,51 +342,16 @@ nav a {
     color: #000;
 }
 
-.social-link img {
+.social-link {
+    display: flex;
     width: 20px;
-}
-/* 
-.carousel {
-    position: relative;
+    height: 20px;
 }
 
-.carousel.pointer-event {
-    touch-action: pan-y;
+object {
+    pointer-events: none;
 }
 
-.carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-.carousel-item {
-    position: relative;
-    display: block;
-    float: left;
-    width: 100%;
-    margin-right: -100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transition: transform 0.6s ease-in-out;
-}
-@media (prefers-reduced-motion: reduce) {
-    .carousel-item {
-        transition: none;
-    }
-}
-
-.carousel-item.active {
-        z-index: 2;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .carousel-fade .active.carousel-item-start,
-    .carousel-fade .active.carousel-item-end {
-        transition: none;
-    }
-}
-*/
 .carousel-control-prev,
 .carousel-control-next {
     position: absolute;
