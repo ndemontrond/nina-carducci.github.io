@@ -20,7 +20,7 @@
     </head>
     <body>
         <header>
-            <h3 class="name">Nina Carducci</h3>
+            <h1 class="name">Nina Carducci</h1>
             <nav>
                 <ul>
                     <li><a href="#about">À propos</a></li>
@@ -42,85 +42,90 @@
         </header>
         <main>
             <div class="carousel-container" id="carouselId">
-                <div class="carousel-indicators">
-                    <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="0"
-                        class="active"
-                        aria-label="Slide 1"
-                        aria-current="true"
-                    ></button>
-                    <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2"
-                        class=""
-                    ></button>
-                    <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3"
-                        class=""
-                    ></button>
-                </div>
                 <div class="carousel">
-                    <div class="image active">
-                        <img
-                            loading="eager"
-                            src="./assets/images/slider/office-worker-walking-tokyo-street-desktop.webp"
-                            alt="office worker walking in tokyo street"
-                        />
+                    <div class="carousel-slider">
+                        <div class="carousel-slide">
+                            <picture>
+                                <source
+                                    media="(max-width: 767px)"
+                                    srcset="
+                                        ./assets/images/slider/office-worker-walking-tokyo-street-mobile.webp
+                                    "
+                                />
+                                <source
+                                    media="(min-width: 768px) and (max-width: 1023px)"
+                                    srcset="
+                                        ./assets/images/slider/office-worker-walking-tokyo-street-tablet.webp
+                                    "
+                                />
+                                <source
+                                    media="(min-width: 1024px)"
+                                    srcset="
+                                        ./assets/images/slider/office-worker-walking-tokyo-street-desktop.webp
+                                    "
+                                />
+                                <img
+                                    src="./assets/images/slider/office-worker-walking-tokyo-street-desktop.webp"
+                                    alt="office worker walking in tokyo street"
+                                />
+                            </picture>
+                        </div>
+                        <div class="carousel-slide">
+                            <picture>
+                                <source
+                                    media="(max-width: 767px)"
+                                    srcset="
+                                        ./assets/images/slider/crowd-concert-mobile.webp
+                                    "
+                                />
+                                <source
+                                    media="(min-width: 768px) and (max-width: 1023px)"
+                                    srcset="
+                                        ./assets/images/slider/crowd-concert-tablet.webp
+                                    "
+                                />
+                                <source
+                                    media="(min-width: 1024px)"
+                                    srcset="
+                                        ./assets/images/slider/crowd-concert-desktop.webp
+                                    "
+                                />
+                                <img
+                                    src="./assets/images/slider/crowd-concert-desktop.webp"
+                                    alt="crowd at a concert"
+                                    loading="lazy"
+                                />
+                            </picture>
+                        </div>
+                        <div class="carousel-slide">
+                            <picture>
+                                <source
+                                    media="(max-width: 767px)"
+                                    srcset="
+                                        ./assets/images/slider/man-kissing-woman-mobile.webp
+                                    "
+                                />
+                                <source
+                                    media="(min-width: 768px) and (max-width: 1023px)"
+                                    srcset="
+                                        ./assets/images/slider/man-kissing-woman-tablet.webp
+                                    "
+                                />
+                                <source
+                                    media="(min-width: 1024px)"
+                                    srcset="
+                                        ./assets/images/slider/man-kissing-woman-desktop.webp
+                                    "
+                                />
+                                <img
+                                    src="./assets/images/slider/man-kissing-woman-desktop.webp"
+                                    alt="man kissing a woman"
+                                    loading="lazy"
+                                />
+                            </picture>
+                        </div>
                     </div>
-                    <div class="image">
-                        <img
-                            loading="lazy"
-                            src="./assets/images/slider/crowd-concert-desktop.webp"
-                            alt="crow at a concert"
-                        />
-                    </div>
-                    <div class="image">
-                        <img
-                            loading="lazy"
-                            src="./assets/images/slider/man-kissing-woman-desktop.webp"
-                            alt="man kissing a woman"
-                        />
-                    </div>
-                    <!-- <div class="image active">
-                        <img
-                            loading="eager"
-                            src="./assets/images/slider/office-worker-walking-tokyo-street-desktop.webp"
-                            alt="office worker walking in tokyo street"
-                        />
-                    </div> -->
                 </div>
-
-                <button
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev"
-                >
-                    <span
-                        class="carousel-control-prev-icon"
-                        aria-hidden="true"
-                    ></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next"
-                >
-                    <span
-                        class="carousel-control-next-icon"
-                        aria-hidden="true"
-                    ></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
 
             <section id="about">
@@ -280,71 +285,6 @@
                             />
                         </div>
                     </div>
-                    <!-- <div class="gallery" style="display: none">
-                        <img
-                            data-gallery-tag="Concert"
-                            class="gallery-item"
-                            src="./assets/images/gallery/concerts/crowd-rock-concert.webp"
-                            alt="crowd at a rock concert"
-                            loading="lazy"
-                        />
-                        <img
-                            data-gallery-tag="Entreprises"
-                            class="gallery-item"
-                            src="./assets/images/gallery/entreprise/man-wearing-black-suit.webp"
-                            alt="man wearing a black suit"
-                            loading="lazy"
-                        />
-                        <img
-                            data-gallery-tag="Entreprises"
-                            class="gallery-item"
-                            src="./assets/images/gallery/entreprise/woman-smilling-business-meeting.webp"
-                            alt="woman smilling during a business meeting"
-                            loading="lazy"
-                        />
-                        <img
-                            data-gallery-tag="Mariages"
-                            class="gallery-item"
-                            src="./assets/images/gallery/mariage/hands-touching.webp"
-                            alt="two hands touching with fingertip"
-                            loading="lazy"
-                        />
-                        <img
-                            data-gallery-tag="Portrait"
-                            class="gallery-item"
-                            src="./assets/images/gallery/portraits/man-closed-eyes.webp"
-                            alt="man with closed eyes"
-                            loading="lazy"
-                        />
-                        <img
-                            data-gallery-tag="Mariages"
-                            class="gallery-item"
-                            src="./assets/images/gallery/mariage/wed-couple.webp"
-                            alt="just wed couple"
-                            loading="lazy"
-                        />
-                        <img
-                            data-gallery-tag="Portrait"
-                            class="gallery-item"
-                            src="./assets/images/gallery/portraits/woman-next-to-fence.webp"
-                            alt="woman next to a fence"
-                            loading="lazy"
-                        />
-                        <img
-                            data-gallery-tag="Concert"
-                            class="gallery-item"
-                            src="./assets/images/gallery/concerts/singer-colored-smoke.webp"
-                            alt="singer at a concert with colored smoke behind him"
-                            loading="lazy"
-                        />
-                        <img
-                            data-gallery-tag="Entreprises"
-                            class="gallery-item"
-                            src="./assets/images/gallery/entreprise/woman-laughing.webp"
-                            alt="woman laughing in an office"
-                            loading="lazy"
-                        />
-                    </div> -->
                 </div>
                 <figure class="quote">
                     <blockquote class="quote__text h1">

@@ -515,14 +515,7 @@ nav a {
     /* display: none; */
 }
 
-.carousel .image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.carousel .active {
+.carousel img {
     display: block;
     width: 100%;
     height: 100%;
@@ -557,6 +550,74 @@ nav a {
 
 .carousel-container .btn-carousel-next i::before {
     vertical-align: baseline;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    font-size: 2.5vmin;
+}
+
+.carousel-slider {
+    display: flex;
+    transition: 0.3s;
+}
+
+.carousel-slide {
+    flex: 1 0 100%;
+}
+
+.carousel-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel button {
+    font-size: inherit;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1em;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.carousel-prev {
+    left: 2em;
+}
+
+.carousel-next {
+    right: 2em;
+}
+
+.carousel-navigation {
+    position: absolute;
+    bottom: 1em;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.carousel-bullet {
+    width: 1em;
+    height: 1em;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.carousel-bullet.is-active {
+    background: #1c69d3;
 }
 
 #about {
@@ -7924,7 +7985,6 @@ fieldset:disabled .btn {
 .py-3 {
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
-    
 }
 
 .py-4 {

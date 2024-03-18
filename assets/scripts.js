@@ -3,132 +3,129 @@
 
     let activeModal = null; // Variable to store the active modal
 
-    // DOM utility functions:
-    function getElement(selector, parent = document) {
-        return parent.querySelector(selector);
-    }
+    function initializeCarousel() {
+        const carousels = document.querySelectorAll(".carousel-container");
 
-    function getElements(selector, parent = document) {
-        return parent.querySelectorAll(selector);
-    }
+        carousels.forEach((container) => {
+            const getElement = (selector, parent = container) =>
+                parent.querySelector(selector);
+            const getElements = (selector, parent = container) =>
+                parent.querySelectorAll(selector);
+            const createElement = (tag, prop) =>
+                Object.assign(document.createElement(tag), prop);
 
-    // Carousel component:
-    const carousel = (container) => {
-        const carouselContainer = getElement(".carousel", container);
+            // Helper function:
+            const mod = (n, m) => ((n % m) + m) % m;
 
-        const slides = getElements(".image", carouselContainer);
-        const totalSlides = slides.length;
-        let currentIndex = 0; // Start from the second slide
+            // Carousel component:
+            const carousel = getElement(".carousel", container);
+            const carouselSlider = getElement(".carousel-slider", carousel);
+            const slides = getElements(".carousel-slide", carouselSlider);
+            const buttons = [];
 
-        // Clone the first and last slide and append them respectively to the end and beginning
-        const firstSlideClone = slides[0].cloneNode(true);
-        const lastSlideClone = slides[totalSlides - 1].cloneNode(true);
-        carouselContainer.appendChild(firstSlideClone);
-        carouselContainer.insertBefore(lastSlideClone, slides[0]);
+            let c = 0;
+            const totalSlides = slides.length;
 
-        // Animation method:
-        const animateCarousel = () => {
-            carouselContainer.style.transition = "transform 0.6s ease-in-out";
-            carouselContainer.style.transform = `translateX(${
-                -currentIndex * 100
-            }%)`;
-            updateIndicators();
-        };
+            if (totalSlides < 2) return;
 
-        const updateIndicators = () => {
-            let currentIndexIndicator;
-            if (currentIndex === 3) {
-                currentIndexIndicator = 0;
-            } else {
-                currentIndexIndicator = currentIndex;
-            }
-            const indicators = getElements(".carousel-indicators button");
-            indicators.forEach((button, index) => {
-                if (index === currentIndexIndicator) {
-                    button.classList.add("active");
-                    button.setAttribute("aria-current", "true");
-                } else {
-                    button.classList.remove("active");
-                    button.removeAttribute("aria-current");
-                }
+            // Methods:
+            const animate = (ms = 500) => {
+                const cMod = mod(c, totalSlides);
+                carouselSlider.style.transitionDuration = `${ms}ms`;
+                carouselSlider.style.transform = `translateX(${
+                    (-c - 1) * 100
+                }%)`;
+                slides.forEach((slide, i) =>
+                    slide.classList.toggle("is-active", cMod === i)
+                );
+                buttons.forEach((button, i) =>
+                    button.classList.toggle("active", cMod === i)
+                );
+            };
+
+            const prev = () => {
+                if (c <= -1) return;
+                c -= 1;
+                animate();
+            };
+
+            const next = () => {
+                if (c >= totalSlides) return;
+                c += 1;
+                animate();
+            };
+
+            const goTo = (index) => {
+                c = index;
+                animate();
+            };
+
+            const play = () => {
+                intervalId = setInterval(next, 5000);
+            };
+
+            const stop = () => {
+                clearInterval(intervalId);
+            };
+
+            // Buttons:
+            const prevButton = createElement("button", {
+                type: "button",
+                className: "carousel-prev carousel-control-prev-icon",
+                innerHTML: "<span class='visually-hidden'>Previous</span>",
+                onclick: () => prev(),
             });
-        };
+            prevButton.setAttribute("aria-label", "prevButton");
 
-        // Go to previous slide:
-        const prevSlide = () => {
-            currentIndex--;
-            if (currentIndex < 0) {
-                carouselContainer.style.transition = "none";
-                currentIndex = totalSlides;
-                carouselContainer.style.transform = `translateX(${
-                    -currentIndex * 100
-                }%)`;
-                setTimeout(() => {
-                    carouselContainer.style.transition =
-                        "transform 0.4s ease-in-out";
-                    currentIndex--;
-                    animateCarousel();
-                }, 50);
-            } else {
-                animateCarousel();
+            const nextButton = createElement("button", {
+                type: "button",
+                className: "carousel-next carousel-control-next-icon",
+                innerHTML: "<span class='visually-hidden'>Next</span>",
+                onclick: () => next(),
+            });
+            nextButton.setAttribute("aria-label", "nextButton");
+
+            // Navigation:
+            const navigation = createElement("div", {
+                className: "carousel-indicators",
+            });
+
+            // Navigation bullets:
+            for (let i = 0; i < totalSlides; i++) {
+                const button = createElement("button", {
+                    type: "button",
+                    onclick: () => goTo(i),
+                });
+                // Set the data-bs-target attribute
+                button.setAttribute("data-bs-target", i);
+                button.setAttribute("aria-label", `Slide ${i + 1}`);
+                button.setAttribute("aria-current", "false");
+                buttons.push(button);
             }
-        };
 
-        // Go to next slide:
-        const nextSlide = () => {
-            currentIndex++;
-            if (currentIndex > totalSlides) {
-                currentIndex = 0;
-                carouselContainer.style.transition = "none";
-                carouselContainer.style.transform = `translateX(${
-                    -currentIndex * 100
-                }%)`;
-                setTimeout(() => {
-                    currentIndex = 1;
-                    carouselContainer.style.transition =
-                        "transform 0.4s ease-in-out";
-                    animateCarousel();
-                }, 50);
-            } else {
-                animateCarousel();
-            }
-        };
+            // Events:
+            carouselSlider.addEventListener("transitionend", () => {
+                if (c <= -1) c = totalSlides - 1;
+                if (c >= totalSlides) c = 0;
+                animate(0);
+            });
 
-        const nextButton = getElement(".carousel-control-next");
-        nextButton.onclick = nextSlide;
+            carousel.addEventListener("mouseover", () => stop());
+            carousel.addEventListener("mouseout", () => play());
 
-        const prevButton = getElement(".carousel-control-prev");
-        prevButton.onclick = prevSlide;
+            // Init:
+            navigation.append(...buttons);
+            carousel.append(prevButton, nextButton, navigation);
 
-        // Define automatic sliding functionality
-        let intervalId;
+            carouselSlider.prepend(slides[totalSlides - 1].cloneNode(true));
+            carouselSlider.append(slides[0].cloneNode(true));
 
-        const startAutoSlide = () => {
-            intervalId = setInterval(nextSlide, 5000); // Adjust interval as needed
-        };
-
-        const stopAutoSlide = () => {
-            clearInterval(intervalId);
-        };
-
-        // Get carousel container
-        const carouselParent = document.getElementById("carouselId");
-
-        // Add event listeners for mouseover and mouseout on the carousel container
-        carouselParent.addEventListener("mouseover", () => {
-            stopAutoSlide();
+            animate(0);
+            play();
         });
+    }
 
-        carouselParent.addEventListener("mouseout", () => {
-            startAutoSlide();
-        });
-
-        // Start automatic sliding initially
-        startAutoSlide();
-    };
-
-    // Initialize carousels:
-    getElements(".carousel-container").forEach(carousel);
+    initializeCarousel();
 
     // Function to set up event listeners
     function setupEventListeners() {
