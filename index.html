@@ -3,12 +3,56 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="UTF-8" />
+
         <meta
             name="description"
             content="Photographe professionnelle spécialisée dans les portraits, les mariages et les concerts. Capturant des moments précieux et les rendant immortels."
         />
         <meta name="author" content="Nina Carducci" />
         <title>Mon site de photographie</title>
+        <meta
+            itemprop="name"
+            content="Nina Carducci - Photographe professionnel"
+        />
+        <meta
+            itemprop="description"
+            content="Photographe professionnelle spécialisée dans les portraits, les mariages et les concerts. Capturant des moments précieux et les rendant immortels."
+        />
+        <meta itemprop="image" content="./assets/images/nina-site-owner.webp">
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@nina_carducci" />
+        <meta
+            name="twitter:title"
+            content="Nina Carducci - Photographe professionnel"
+        />
+        <meta
+            name="twitter:description"
+            content="Photographe professionnelle spécialisée dans les portraits, les mariages et les concerts. Capturant des moments précieux et les rendant immortels."
+        />
+        <meta name="twitter:creator" content="@nina_carducci" />
+        <meta
+            name="twitter:image"
+            content="./assets/images/nina-site-owner.webp"
+        />
+        <meta name="twitter:image:alt" content="Photo de Nina Carducci" />
+
+        <meta
+            property="og:title"
+            content="Nina Carducci - Photographe professionnel"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nina-carducci.github.io/" />
+        <meta
+            property="og:image"
+            content="./assets/images/nina-site-owner.webp"
+        />
+        <meta property="og:image:alt" content="Photo de Nina Carducci" />
+        <meta
+            property="og:description"
+            content="Photographe professionnelle spécialisée dans les portraits, les mariages et les concerts. Capturant des moments précieux et les rendant immortels."
+        />
+
         <link rel="stylesheet" href="./assets/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,14 +72,6 @@
                     <li><a href="#services" tabindex="0">Service</a></li>
                     <li><a href="#contact" tabindex="0">Contact</a></li>
                     <li>
-                        <!-- <a
-                            class="social-link"
-                            href="https://www.instagram.com/ninacarducci.photo/?hl=fr"
-                            target="_blank"
-                            ><img
-                                src="assets/images/instagram.png"
-                                alt="instagram logo"
-                        /></a> -->
                         <a
                             class="social-link"
                             href="https://www.instagram.com/ninacarducci.photo/?hl=fr"
@@ -45,8 +81,10 @@
                                 type="image/svg+xml"
                                 data="assets/images/instagram.svg"
                                 class="instagram-svg"
-                            >
-                            </object>
+                                alt="Instagram logo"
+                                aria-label="Lien vers mon compte Instagram"
+                            ><span class="visually-hidden">Mon compte Instagram</span></object>
+                            
                         </a>
                     </li>
                 </ul>

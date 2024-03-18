@@ -452,20 +452,8 @@ object {
 }
 .carousel-indicators .active {
     opacity: 1;
-    background-color: #084298;
-    /* //A changer !!!!! */
+    background-color: #beb45a;
 }
-/*  
-.carousel-caption {
-    position: absolute;
-    right: 15%;
-    bottom: 1.25rem;
-    left: 15%;
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-    color: #fff;
-    text-align: center;
-} */
 
 .carousel-container {
     position: relative;
@@ -479,7 +467,6 @@ object {
 
 .carousel .image {
     flex: 1 0 100%;
-    /* display: none; */
 }
 
 .carousel img {
@@ -581,10 +568,6 @@ object {
     background: #fff;
     cursor: pointer;
     border-radius: 50%;
-}
-
-.carousel-bullet.is-active {
-    background: #1c69d3;
 }
 
 #about {
@@ -7069,15 +7052,7 @@ fieldset:disabled .btn {
 
 .visually-hidden,
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
+    display: none;
 }
 
 .stretched-link::after {
