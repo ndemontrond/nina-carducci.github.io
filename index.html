@@ -10,15 +10,6 @@
         />
         <meta name="author" content="Nina Carducci" />
         <title>Mon site de photographie</title>
-        <meta
-            itemprop="name"
-            content="Nina Carducci - Photographe professionnel"
-        />
-        <meta
-            itemprop="description"
-            content="Photographe professionnelle spécialisée dans les portraits, les mariages et les concerts. Capturant des moments précieux et les rendant immortels."
-        />
-        <meta itemprop="image" content="./assets/images/nina-site-owner.webp" />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@nina_carducci" />
@@ -465,17 +456,64 @@
             </section>
         </main>
         <footer>
+            <!-- Référencement local avec Shema.org -->
             <address>
-                <span
-                    >Adresse : 68 avenue Alsace-Lorraine, Bordeaux, 33200</span
+                <div
+                    itemscope
+                    itemtype="http://schema.org/LocalBusiness"
+                    class="schema"
                 >
-                <span
-                    >Téléphone :
-                    <a href="tel:0556677889">05 56 67 78 89</a></span
-                >
-                <span
-                    >Horaires d'ouverture : Lundi - Vendredi de 10h à 19h.</span
-                >
+                    <p itemprop="name">
+                        Nina Carducci - Photographe à Bordeaux
+                    </p>
+                    <div itemprop="telephone">
+                        <a class="ref-link-tel" href="tel:+33556677889"
+                            >05 56 67 78 89</a
+                        >
+                    </div>
+                    <div
+                        itemprop="address"
+                        itemscope
+                        itemtype="http://schema.org/PostalAddress"
+                    >
+                        <span itemprop="streetAddress"
+                            >68 avenue Alsace-Lorraine</span
+                        >
+                        <span itemprop="addressLocality">Bordeaux</span>,
+                        <span itemprop="addressRegion">Bordeaux</span>
+                        <span itemprop="postalCode">33200</span>
+                        <meta itemprop="addressCountry" content="FR" />
+                    </div>
+                    <div>Horaires d'ouverture : Lundi - Vendredi de 10h à
+                        19h.</div>
+                    <div
+                        itemprop="openingHoursSpecification"
+                        itemscope
+                        itemtype="http://schema.org/OpeningHoursSpecification"
+                    >
+                        <meta itemprop="dayOfWeek" content="Monday" />
+                        <meta itemprop="opens" content="10:00" />
+                        <meta itemprop="closes" content="19:00" />
+                        <meta itemprop="dayOfWeek" content="Tuesday" />
+                        <meta itemprop="opens" content="10:00" />
+                        <meta itemprop="closes" content="19:00" />
+                        <meta itemprop="dayOfWeek" content="Wednesday" />
+                        <meta itemprop="opens" content="10:00" />
+                        <meta itemprop="closes" content="19:00" />
+                        <meta itemprop="dayOfWeek" content="Thursday" />
+                        <meta itemprop="opens" content="10:00" />
+                        <meta itemprop="closes" content="19:00" />
+                        <meta itemprop="dayOfWeek" content="Friday" />
+                        <meta itemprop="opens" content="10:00" />
+                        <meta itemprop="closes" content="19:00" />
+                        <meta itemprop="dayOfWeek" content="Saturday" />
+                        <meta itemprop="opens" content="Closed" />
+                        <meta itemprop="closes" content="Closed" />
+                        <meta itemprop="dayOfWeek" content="Sunday" />
+                        <meta itemprop="opens" content="Closed" />
+                        <meta itemprop="closes" content="Closed" />
+                    </div>
+                </div>
             </address>
         </footer>
     </body>

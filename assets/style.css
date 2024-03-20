@@ -602,7 +602,7 @@ footer {
     padding-block: 2em;
 }
 
-address {
+.schema {
     display: flex;
     flex-direction: column;
     align-items: center;
