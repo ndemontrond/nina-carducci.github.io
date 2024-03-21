@@ -437,6 +437,7 @@ object {
     overflow: hidden;
     display: flex; /* Add display flex */
     align-items: center; /* Vertically center the image */
+    cursor: pointer;
 }
 
 #galleryContainerChild img {
